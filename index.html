@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JB Jarr Official</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* VIDEO BACKGROUND */
+
+.bg-video{
+  position:fixed;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
+  z-index:-3;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.72),
+    rgba(5,8,22,0.92)
+  );
+  backdrop-filter:blur(4px);
+  z-index:-2;
+}
+
+/* PARTICLES */
+
+.particle{
+  position:fixed;
+  width:4px;
+  height:4px;
+  background:cyan;
+  border-radius:50%;
+  opacity:0.5;
+  animation:float linear infinite;
+  z-index:-1;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh);
+    opacity:0;
+  }
+
+  to{
+    transform:translateY(-10vh);
+    opacity:1;
+  }
+}
+
+/* NAVBAR */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 7%;
+  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,0.04);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+  font-size:30px;
+  font-weight:700;
+  color:#00ffff;
+  text-shadow:0 0 20px cyan;
+}
+
+.menu{
+  display:flex;
+  gap:25px;
+}
+
+.menu a{
+  color:#cbd5e1;
+  text-decoration:none;
+  transition:0.3s;
+  font-weight:500;
+}
+
+.menu a:hover{
+  color:#00ffff;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  padding:90px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:60px;
+}
+
+.hero-text{
+  flex:1;
+  min-width:300px;
+}
+
+.hero-text h1{
+  font-size:78px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.hero-text span{
+  color:#00ffff;
+  text-shadow:
+    0 0 25px cyan,
+    0 0 60px rgba(0,255,255,0.4);
+}
+
+.hero-text p{
+  color:#cbd5e1;
+  line-height:1.9;
+  margin-bottom:35px;
+  max-width:650px;
+}
+
+/* BUTTON */
+
+.hero-buttons{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:16px 30px;
+  border:none;
+  border-radius:18px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  background:linear-gradient(135deg,#00ffff,#2563eb);
+  transition:0.4s;
+  box-shadow:0 0 25px rgba(0,255,255,0.35);
+}
+
+.btn:hover{
+  transform:translateY(-5px) scale(1.04);
+}
+
+.btn2{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+  width:370px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  border-radius:30px;
+  padding:35px;
+  text-align:center;
+
+  box-shadow:
+    0 0 50px rgba(0,255,255,0.16),
+    0 0 120px rgba(37,99,235,0.12);
+}
+
+.profile-img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid cyan;
+  margin-bottom:20px;
+  box-shadow:0 0 25px cyan;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#00ffff,#2563eb);
+  margin-bottom:15px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.stats{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:rgba(255,255,255,0.04);
+  padding:15px;
+  border-radius:16px;
+}
+
+.stat h2{
+  color:#00ffff;
+}
+
+/* SERVICES */
+
+.services{
+  padding:70px 7%;
+}
+
+.title{
+  text-align:center;
+  font-size:48px;
+  margin-bottom:50px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:35px;
+  border-radius:25px;
+  transition:0.4s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+    0 0 40px rgba(0,255,255,0.2),
+    0 0 100px rgba(37,99,235,0.12);
+}
+
+.icon{
+  font-size:50px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+/* TESTIMONI */
+
+.testi{
+  padding:20px 7% 90px;
+}
+
+.testi-wrap{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.testi-box{
+  background:rgba(255,255,255,0.05);
+  border-radius:24px;
+  padding:30px;
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.4s;
+}
+
+.testi-box:hover{
+  transform:translateY(-8px);
+}
+
+.testi-box p{
+  color:#cbd5e1;
+  margin-top:15px;
+  line-height:1.8;
+}
+
+/* FOOTER */
+
+footer{
+  padding:40px;
+  text-align:center;
+  color:#94a3b8;
+}
+
+/* STICKY BUTTON */
+
+.sticky{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+
+  background:linear-gradient(135deg,#22c55e,#15803d);
+
+  padding:16px 24px;
+  border-radius:50px;
+
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+
+  box-shadow:0 0 20px rgba(34,197,94,0.5);
+
+  animation:pulse 2s infinite;
+
+  z-index:999;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+/* NOTIF */
+
+#notif{
+  position:fixed;
+  top:25px;
+  left:50%;
+  transform:translateX(-50%);
+
+  background:#22c55e;
+
+  padding:13px 22px;
+
+  border-radius:15px;
+
+  display:none;
+
+  z-index:9999;
+
+  box-shadow:0 0 20px rgba(34,197,94,0.5);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .hero{
+    padding-top:60px;
+  }
+
+  .hero-text h1{
+    font-size:50px;
+  }
+
+  .menu{
+    display:none;
+  }
+
+  .profile-card{
+    width:100%;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+
+<video autoplay muted loop class="bg-video">
+  <source src="lapangan_bola.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- NOTIF -->
+
+<div id="notif">
+  🔥 Welcome To JB Jarr Official
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+  <div class="logo">
+    JB Jarr
+  </div>
+
+  <div class="menu">
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#testi">Testimoni</a>
+    <a href="#">Contact</a>
+  </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-text">
+
+    <h1>
+      PREMIUM <span>EFOOTBALL</span> STORE
+    </h1>
+
+    <p>
+      Trusted eFootball service Indonesia dengan desain cyber neon modern,
+      fast respon, proses cepat, dan kualitas premium ala esports website profesional.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="https://wa.me/62882015504915" class="btn">
+        🚀 ORDER SEKARANG
+      </a>
+
+      <a href="https://tiktok.com/@zharizhere" class="btn btn2">
+        🎵 TikTok
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- PROFILE -->
+
+  <div class="profile-card">
+
+    <div class="badge">
+      ⚡ TRUSTED SELLER
+    </div>
+
+    <img src="jb_efootbal.jpeg" class="profile-img">
+
+    <h1>JB Jarr Official</h1>
+
+    <p style="color:#94a3b8;margin-top:10px;">
+      Professional eFootball Service
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <h2>100+</h2>
+        <p>Order</p>
+      </div>
+
+      <div class="stat">
+        <h2>24/7</h2>
+        <p>Fast</p>
+      </div>
+
+      <div class="stat">
+        <h2>99%</h2>
+        <p>Trusted</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+  <h1 class="title">
+    🔥 OUR SERVICES
+  </h1>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">🎮</div>
+      <h2>Joki Divisi</h2>
+      <p>
+        Push rank cepat dengan proses aman dan terpercaya.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💰</div>
+      <h2>Top Up</h2>
+      <p>
+        Harga murah dan proses instan dengan pelayanan premium.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h2>Fast Response</h2>
+      <p>
+        Admin aktif dan respon cepat untuk semua pelanggan.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TESTI -->
+
+<section class="testi" id="testi">
+
+  <h1 class="title">
+    ⭐ TESTIMONI
+  </h1>
+
+  <div class="testi-wrap">
+
+    <div class="testi-box">
+      ⭐⭐⭐⭐⭐
+      <p>
+        "Trusted banget dan cepat prosesnya!"
+      </p>
+    </div>
+
+    <div class="testi-box">
+      ⭐⭐⭐⭐⭐
+      <p>
+        "Harga murah tapi kualitas premium."
+      </p>
+    </div>
+
+    <div class="testi-box">
+      ⭐⭐⭐⭐⭐
+      <p>
+        "UI website nya keren dan pelayanan mantap."
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  ⚽ JB Jarr Official 2026 • Elite eFootball Experience
+</footer>
+
+<!-- STICKY BUTTON -->
+
+<a href="https://wa.me/62882015504915" class="sticky">
+  🔥 ORDER CEPAT
+</a>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* NOTIF */
+
+window.onload = () => {
+
+  const notif = document.getElementById('notif')
+
+  notif.style.display = 'block'
+
+  setTimeout(() => {
+    notif.style.display = 'none'
+  },3000)
+
+}
+
+/* PARTICLES */
+
+for(let i = 0; i < 35; i++){
+
+  const p = document.createElement('div')
+
+  p.classList.add('particle')
+
+  p.style.left = Math.random() * 100 + 'vw'
+
+  p.style.animationDuration =
+  (5 + Math.random() * 10) + 's'
+
+  p.style.opacity = Math.random()
+
+  document.body.appendChild(p)
+
+}
+
+</script>
+
+</body>
+</html>
